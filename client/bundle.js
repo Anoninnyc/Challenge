@@ -68,13 +68,9 @@
 	  this.goals = goals.goals;
 	  this.goalGUIDS = this.goals.map(goal => goal.guid);
 
-	  this.getFiltered = () => {
-	    return this.filtered;
-	  };
+	  this.getFiltered = () =>  this.filtered;
 
-	  this.getInfo = () => {
-	    return [this.filtered, this.programs[this.specificApp]];
-	  };
+	  this.getInfo = () => [this.filtered, this.programs[this.specificApp]];
 
 	  this.getGoals = () => {
 	    const goals = this.goals;
@@ -204,7 +200,7 @@
 	      "enrollment_start_date": "2015-07-01",
 	      "hide_during_enrollment": false,
 	      "icon_url": "https://s3.amazonaws.com/i.jiff.com/production/applications/myjiff/jiff/test_incentives/icn_program_steps%402x.png",
-	      "incentive_description": "Earn every day!  For every day you track your steps, you can earn up to $3:\n\n5,000 steps: earn 1 point\n10,000 steps: earn 2 points\n15,000 steps: earn 3 points\n\nFor the steps you take to count toward your incentive goal, you must sync your tracker with its app within 14 days. For example, the steps you take on March 1 must be syncâ€™d no later than March 15.",
+	      "incentive_description": "Earn every day!  For every day you track your steps, you can earn up to $3:\n \n \n 5,000 steps: earn 1 point\n10,000 steps: earn 2 points\n15,000 steps: earn 3 points\n\nFor the steps you take to count toward your incentive goal, you must sync your tracker with its app within 14 days. For example, the steps you take on March 1 must be syncâ€™d no later than March 15.",
 	      "invisible": false,
 	      "mandatory": null,
 	      "possible_earnings_description": "Earn some points per day",
@@ -503,12 +499,10 @@
 	  this.filter = index => {
 	    infoService.specificApp = infoService.ids.indexOf(index);
 	    infoService.filtered = true;
-	    console.log(infoService.filtered);
 	  };
 
-	  this.back = ()=>{
-	    infoService.filtered=false;
-	  };
+	  this.back = () =>infoService.filtered=false;
+
 	})
 
 /***/ },
@@ -519,13 +513,9 @@
 
 	  $scope.programs = infoService.programs;
 
-	  $scope.filter = index => {
-	    toggleService.filter(index);
-	  };
+	  $scope.filter = index => toggleService.filter(index);
 
-	  $scope.getFiltered = () => {
-	    return infoService.getFiltered();
-	  };
+	  $scope.getFiltered = () => infoService.getFiltered();
 
 	});
 
@@ -534,21 +524,13 @@
 /* 6 */
 /***/ function(module, exports) {
 
-	
-	myApp.controller('details', function($scope, infoService,toggleService) {
+	myApp.controller('details', function($scope, infoService, toggleService) {
 	  
-	  $scope.getGoals = () => {
-	    return infoService.getGoals();
-	  };
+	  $scope.getGoals = () => infoService.getGoals();
 
-	  $scope.getInfo = () => {
-	    return infoService.getInfo();
-	  };
+	  $scope.getInfo = () => infoService.getInfo();
 
-	  $scope.back = () => {
-	    toggleService.back();
-	    console.log(infoService.filtered);
-	  };
+	  $scope.back = () => toggleService.back();
 
 	});
 

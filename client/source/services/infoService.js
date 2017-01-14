@@ -9,13 +9,9 @@ myApp.service('infoService', function() {
   this.goals = goals.goals;
   this.goalGUIDS = this.goals.map(goal => goal.guid);
 
-  this.getFiltered = () => {
-    return this.filtered;
-  };
+  this.getFiltered = () =>  this.filtered;
 
-  this.getInfo = () => {
-    return [this.filtered, this.programs[this.specificApp]];
-  };
+  this.getInfo = () => [this.filtered, this.programs[this.specificApp]];
 
   this.getGoals = () => {
     const goals = this.goals;

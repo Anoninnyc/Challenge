@@ -2,12 +2,8 @@ myApp.controller('dashboard', function($scope, infoService, toggleService){
 
   $scope.programs = infoService.programs;
 
-  $scope.filter = index => {
-    toggleService.filter(index);
-  };
+  $scope.filter = index => toggleService.filter(index);
 
-  $scope.getFiltered = () => {
-    return infoService.getFiltered();
-  };
+  $scope.getFiltered = () => infoService.getFiltered();
 
 });
