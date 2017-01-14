@@ -6,8 +6,14 @@
 	<h2>{{getFilter()[1].title}}</h2>
 	<h2>{{getFilter()[1].description}}</h2>
 	<p>{{getFilter()[1].incentive_description}}</p>
-	{{getFilter()[1]}}
 
+	<div ng-repeat="goal in getGoals()[0]">
+		<h2>Title:{{goal.title}}</h2>
+		<h3>Description{{goal.description}}</h3>
+		<h4>Incentive:{{goal.incentive_value}}</h4>
+	</div>
+	{{}}
+	<h1>{{getGoals()[1]||null}}</h1>
 
 	</div>
 </div>

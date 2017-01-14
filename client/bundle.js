@@ -49,7 +49,7 @@
 	__webpack_require__(1);
 	__webpack_require__(3);
 	__webpack_require__(4);
-	__webpack_require__(5);
+	__webpack_require__(6);
 
 
 /***/ },
@@ -59,9 +59,8 @@
 	const programs = __webpack_require__(2).programs;
 
 	myApp.service('appService', function() {
-	  this.filtered=false;
-	  this.specificApp=null;
-	  //this.appInfo=programs[this.specificApp];
+	  this.filtered = false;
+	  this.specificApp = null;
 	  console.log(555);
 	  this.programs = programs.program_blueprints;
 	});
@@ -357,16 +356,37 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	const programs = __webpack_require__(2).programs.program_blueprints;
+	const goals = __webpack_require__(5).goals;
+
+	console.log("goals", goals);
 
 	myApp.controller('details', function($scope, appService) {
-	 
-	  console.log("detail controller");
-	  
+	  $scope.goalGUIDS = goals.map(goal => goal.guid);
 	  $scope.testDetails = 5555;
-	  $scope.getFilter= () => {
-	      console.log('running getFilter from details', appService.filtered);
-	      return [appService.filtered, programs[appService.specificApp]];
 
+	  $scope.getGoals = () => {
+	    var allGoals = [];
+	    var total = 0;
+
+	    for (var i = 0; i < programs[appService.specificApp].goals.length; i++) {
+	      let index = $scope.goalGUIDS.indexOf(programs[appService.specificApp].goals[i].guid);
+	      if (index > -1) {
+	        allGoals.push(goals[index]);
+	      }
+	    }
+	    if (!!allGoals.length){
+	    total = allGoals.map(a=>a.incentive_value).reduce((a,b)=> a+b);
+	   }
+
+	    console.log('allGoals', allGoals, $scope.goalGUIDS, programs[appService.specificApp].goals.map(a => a.guid));
+	    return [allGoals, total];
+	  }
+
+
+
+	  $scope.getFilter = () => {
+	    console.log('running getFilter from details', programs[appService.specificApp], $scope.allGoals);
+	    return [appService.filtered, programs[appService.specificApp]];
 	  };
 
 	  $scope.filter = index => {
@@ -374,12 +394,155 @@
 	    console.log(appService.filtered);
 	  };
 
-	  
-
 	});
+
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+	 module.exports ={
+	  "goals": [
+	    {
+	      "guid": "49db5fada530b1a139d92166b7d7ff53",
+	      "title": "Hit 5000 steps a day",
+	      "description": "Walk 5000 steps a day",
+	      "type": "steps",
+	      "data_type": "activity",
+	      "display_type": "steps",
+	      "start_date": "2015-07-01",
+	      "end_date": "2015-12-31",
+	      "first_earnable_ignores_enroll_date": null,
+	      "tracking_frequency": "day",
+	      "progress_frequency": "day",
+	      "required_tracker": true,
+	      "target_value": 5000,
+	      "grace_period": 14,
+	      "target_comparison_method": null,
+	      "baseline": null,
+	      "calculation_type": "total",
+	      "prorate_short_periods": null,
+	      "scope_identifier": null,
+	      "program_blueprint_id": "165f45e160b0e2ba4946300f16c51ff7",
+	      "display_order": null,
+	      "subtext_template": null,
+	      "pre_success_details": null,
+	      "post_success_details": null,
+	      "incentive_value": 100
+	    },
+	    {
+	      "guid": "67cf5f3c9ccaa893651c275ab8e2be20",
+	      "title": "Hit 7500 steps a day",
+	      "description": "Walk 7500 steps a day",
+	      "type": "steps",
+	      "data_type": "activity",
+	      "display_type": "steps",
+	      "start_date": "2015-07-01",
+	      "end_date": "2015-12-31",
+	      "first_earnable_ignores_enroll_date": null,
+	      "tracking_frequency": "day",
+	      "progress_frequency": "day",
+	      "required_tracker": true,
+	      "target_value": 7500,
+	      "grace_period": 14,
+	      "target_comparison_method": null,
+	      "baseline": null,
+	      "calculation_type": "total",
+	      "prorate_short_periods": null,
+	      "scope_identifier": null,
+	      "program_blueprint_id": "165f45e160b0e2ba4946300f16c51ff7",
+	      "display_order": null,
+	      "subtext_template": null,
+	      "pre_success_details": null,
+	      "post_success_details": null,
+	      "incentive_value": 100
+	    },
+	    {
+	      "guid": "1486582125ae7226daac7b699c59d5fa",
+	      "title": "Hit 10000 steps a day",
+	      "description": "Walk 10000 steps a day",
+	      "type": "steps",
+	      "data_type": "activity",
+	      "display_type": "steps",
+	      "start_date": "2015-07-01",
+	      "end_date": "2015-12-31",
+	      "first_earnable_ignores_enroll_date": null,
+	      "tracking_frequency": "day",
+	      "progress_frequency": "day",
+	      "required_tracker": true,
+	      "target_value": 10000,
+	      "grace_period": 14,
+	      "target_comparison_method": null,
+	      "baseline": null,
+	      "calculation_type": "total",
+	      "prorate_short_periods": null,
+	      "scope_identifier": null,
+	      "program_blueprint_id": "165f45e160b0e2ba4946300f16c51ff7",
+	      "display_order": null,
+	      "subtext_template": null,
+	      "pre_success_details": null,
+	      "post_success_details": null,
+	      "incentive_value": 100
+	    },
+	    {
+	      "guid": "fe8b02b764de150ece76822c2be4535a",
+	      "title": "Sleep",
+	      "description": "Sleep",
+	      "type": "sleep_tracked",
+	      "data_type": "sleep",
+	      "display_type": "steps",
+	      "start_date": "2015-07-01",
+	      "end_date": "2015-12-31",
+	      "first_earnable_ignores_enroll_date": null,
+	      "tracking_frequency": "day",
+	      "progress_frequency": "day",
+	      "required_tracker": true,
+	      "target_value": 1,
+	      "grace_period": 3,
+	      "target_comparison_method": null,
+	      "baseline": null,
+	      "calculation_type": "total",
+	      "prorate_short_periods": null,
+	      "scope_identifier": null,
+	      "program_blueprint_id": "5d9fea64809e7583921352f7add1c48d",
+	      "display_order": null,
+	      "subtext_template": null,
+	      "pre_success_details": null,
+	      "post_success_details": null,
+	      "incentive_value": 200
+	    },
+	    {
+	      "guid": "f1695cfbc8a912753022be9ea1a1c4d7",
+	      "title": "Eat",
+	      "description": "Eat",
+	      "type": "food_tracked",
+	      "data_type": "food",
+	      "display_type": "steps",
+	      "start_date": "2015-07-01",
+	      "end_date": "2015-12-31",
+	      "first_earnable_ignores_enroll_date": null,
+	      "tracking_frequency": "day",
+	      "progress_frequency": "day",
+	      "required_tracker": true,
+	      "target_value": 1,
+	      "grace_period": 3,
+	      "target_comparison_method": null,
+	      "baseline": null,
+	      "calculation_type": "total",
+	      "prorate_short_periods": null,
+	      "scope_identifier": null,
+	      "program_blueprint_id": "e654bc9a3ed20641a4a120cc2e58e928",
+	      "display_order": null,
+	      "subtext_template": null,
+	      "pre_success_details": null,
+	      "post_success_details": null,
+	      "incentive_value": 100
+	    }
+	  ]
+	}
+
+/***/ },
+/* 6 */
 /***/ function(module, exports) {
 
 	myApp.directive('programsView', function() {

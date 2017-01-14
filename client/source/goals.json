@@ -1,4 +1,4 @@
- module.exports.programs ={
+ module.exports ={
   "goals": [
     {
       "guid": "49db5fada530b1a139d92166b7d7ff53",
