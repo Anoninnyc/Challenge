@@ -37,8 +37,8 @@ img {
 }
 
 #detailsTitle {
-    font-size: 5em;
-    font-family: Arial,Times, serif;
+  font-size: 5em;
+  font-family: Arial, Times, serif
 }
 
 #goBack {
@@ -47,22 +47,23 @@ img {
 }
 
 #description {
-    font: 3em arial;
-    margin-bottom: 0.7em;
+  font: 3em arial;
+  margin-bottom: .7em
 }
 
 #incentives {
-    font-size: 1em;
-    font-style: italic;
-    margin: 1em;
-    font-weight: bold;
+  font-size: 1em;
+  font-style: italic;
+  margin: 1em;
+  font-weight: 700
 }
+
 body,
 html,
 p {
   margin: 0;
   padding: 0;
-  color:white;
+  color: #fff
 }
 
 #programTitle {
@@ -70,8 +71,7 @@ p {
 }
 
 #steps #incentives {
-  font-size: 1em
-  margin:0.5em;
+  font-size: 1em margin: .5em
 }
 
 #goalsHeading {
@@ -120,21 +120,20 @@ p {
 }
 
 #hook {
-    font-size: 4em;
-    font-family: Arial, Times, serif;
-    font-weight: bold;
-    margin-bottom: 0.7em;
+  font-size: 4em;
+  font-family: Arial, Times, serif;
+  font-weight: 700;
+  margin-bottom: .7em
 }
 
 pre {
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;  
-    white-space: -pre-wrap;      
-    white-space: -o-pre-wrap;    
-    word-wrap: break-word;       
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word
 }
 
 .goal {
-    margin-bottom: 1em;
+  margin-bottom: 1em
 }
-

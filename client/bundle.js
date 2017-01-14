@@ -69,8 +69,8 @@
 	  this.goals = goals.goals;
 	  this.goalGUIDS = this.goals.map(goal => goal.guid);
 	  // are we zoomed in?
-	  this.getFiltered = () =>  this.filtered;
-	 // get prgram info
+	  this.getFiltered = () => this.filtered;
+	  // get prgram info
 	  this.getInfo = () => [this.filtered, this.programs[this.specificApp]];
 	  // get goals associated with programs;
 	  this.getGoals = () => {
@@ -201,7 +201,7 @@
 	      "enrollment_start_date": "2015-07-01",
 	      "hide_during_enrollment": false,
 	      "icon_url": "https://s3.amazonaws.com/i.jiff.com/production/applications/myjiff/jiff/test_incentives/icn_program_steps%402x.png",
-	      "incentive_description": "Earn every day! For every day you track your steps, you can earn up to $3:\n \n 5,000 steps: earn 1 point\n10,000 steps: earn 2 points\n15,000 steps: earn 3 points\n\nFor the steps you take to count toward your incentive goal, you must sync your tracker with its app within 14 days. For example, the steps you take on March 1 must be syncâ€™d no later than March 15.",
+	      "incentive_description": "Earn every day! For every day you track your steps, you can earn up to $3:\n \n 5,000 steps: earn 1 point\n10,000 steps: earn 2 points\n15,000 steps: earn 3 points\n\nFor the steps you take to count toward your incentive goal, you must sync your tracker with its app within 14 days. For example, the steps you take on March 1 must be synced no later than March 15.",
 	      "invisible": false,
 	      "mandatory": null,
 	      "possible_earnings_description": "Earn some points per day",
@@ -502,22 +502,21 @@
 	    infoService.filtered = true;
 	  };
 	  //zoomout/toggle view
-	  this.back = () =>infoService.filtered=false;
+	  this.back = () => infoService.filtered = false;
+	});
 
-	})
 
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-	myApp.controller('dashboard', function($scope, infoService, toggleService){
+	myApp.controller('dashboard', function($scope, infoService, toggleService) {
 
 	  $scope.programs = infoService.programs;
 	  // zoom in
 	  $scope.filter = index => toggleService.filter(index);
 	  // Are we zoomed in?
 	  $scope.getFiltered = () => infoService.getFiltered();
-
 	});
 
 
@@ -526,13 +525,12 @@
 /***/ function(module, exports) {
 
 	myApp.controller('details', function($scope, infoService, toggleService) {
-	  
+	  // self-explanatory
 	  $scope.getGoals = () => infoService.getGoals();
-
+	  // get program info
 	  $scope.getInfo = () => infoService.getInfo();
-
+	  // zoom out
 	  $scope.back = () => toggleService.back();
-
 	});
 
 
@@ -542,17 +540,18 @@
 
 	myApp.directive('dashboardView', function() {
 	  return {
-	  	  restrict:"A", 
-	      templateUrl: '../source/views/dashboardView.html'  
-	      };
+	    restrict: "A",
+	    templateUrl: '../source/views/dashboardView.html'
+	  };
 	});
 
 	myApp.directive('detailsView', function() {
 	  return {
-	  	  restrict:"A",
-	      templateUrl: '../source/views/detailsView.html'  
-	      };
+	    restrict: "A",
+	    templateUrl: '../source/views/detailsView.html'
+	  };
 	});
+
 
 /***/ }
 /******/ ]);
