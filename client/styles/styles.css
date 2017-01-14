@@ -1,6 +1,6 @@
 body {
 	background-color: blue;
-
+    text-align: center;
 }
 
 .flex-container {
@@ -11,13 +11,49 @@ body {
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     text-align: center;
+    top: 13em;
+    position: relative;
 }
 
 .flex-item {
     margin: 10px;
 }
 
-img{
-    height:250px;
-	width:250px;
+img {
+    width: 17em;
+    height: 17em;
 }
+
+.backRibbon {
+    background-color: red;
+    height: 10em;
+    position: relative;
+    width: 100%;
+    margin: none;
+    text-align: left;
+}
+
+#detailsTitle {
+    font-size: 6em;
+    font-family: Fantasy,Times, serif;
+}
+
+#goBack {
+    font-size: 5em;
+    position: absolute;
+    top: 0.4em;
+}
+
+#description {
+    font-size: 4vw;
+    text-align: left;
+    margin: 1em;
+}
+
+
+
+html, body {
+margin:0;
+padding:0;
+}
+

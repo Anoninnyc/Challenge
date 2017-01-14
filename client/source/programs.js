@@ -138,7 +138,7 @@ module.exports.programs = {
       "custom": null,
       "description": "Go home and sleep!",
       "display_order": 5,
-      "display_type": "steps",
+      "display_type": "sleep",
       "eligible_group": {
         "guid": "f69ba939dc542042b9ccac333c2c5f4e"
       },
@@ -180,7 +180,7 @@ module.exports.programs = {
       "custom": null,
       "description": "Go and eat something!",
       "display_order": 3,
-      "display_type": "steps",
+      "display_type": "eat",
       "eligible_group": {
         "guid": "f69ba939dc542042b9ccac333c2c5f4e"
       },
@@ -222,7 +222,7 @@ module.exports.programs = {
       "custom": null,
       "description": "Go and bonus something!",
       "display_order": 6,
-      "display_type": "steps",
+      "display_type": "Register",
       "eligible_group": {
         "guid": "f69ba939dc542042b9ccac333c2c5f4e"
       },
