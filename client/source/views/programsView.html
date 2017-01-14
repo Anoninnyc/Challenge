@@ -1,5 +1,5 @@
 <div ng-controller="dashboard">
-  <div ng-if='!getFilter()'>
+  <div ng-if='!getFilter()[0]'>
   {{getFilter()}}
     <div class="flex-container">
       <div ng-repeat="program in programs">

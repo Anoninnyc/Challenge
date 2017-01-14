@@ -47,50 +47,29 @@
 	myApp = angular.module('myApp', []);
 
 	__webpack_require__(1);
-	__webpack_require__(2);
+	__webpack_require__(3);
 	__webpack_require__(4);
 	__webpack_require__(5);
 
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
+
+	const programs = __webpack_require__(2).programs;
 
 	myApp.service('appService', function() {
 	  this.filtered=false;
+	  this.specificApp=null;
+	  //this.appInfo=programs[this.specificApp];
 	  console.log(555);
+	  this.programs = programs.program_blueprints;
 	});
+
+
 
 /***/ },
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	const programs = __webpack_require__(3).programs;
-
-
-	myApp.controller('dashboard', function($scope, appService) {
-	  $scope.filtered = false;
-	  $scope.test = 'running dashboard controller';
-	  $scope.programs  = programs.program_blueprints;
-	  console.log("dashboard controller", programs.program_blueprints);
-	  $scope.filter = index => {
-	    $scope.filtered = true;
-	    console.log(index);
-	    appService.filtered = true;
-	    console.log(appService.filtered);
-	  };
-
-	  $scope.getFilter=()=>{
-	      console.log('running getFilter from details', appService.filtered);
-	      return appService.filtered;
-	  }
-
-	});
-
-
-
-/***/ },
-/* 3 */
 /***/ function(module, exports) {
 
 	module.exports.programs = {
@@ -344,18 +323,58 @@
 	};
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
+
+	
+
+	myApp.controller('dashboard', function($scope, appService) {
+	  $scope.filtered = false;
+	  $scope.test = 'running dashboard controller';
+	  $scope.programs  = appService.programs;
+	  console.log("dashboard controller", appService.programs);
+
+	  $scope.filter = index => {
+	    $scope.filtered = true;
+	    console.log(index);
+	    appService.specificApp = index;
+	    appService.filtered = true;
+
+	    console.log(appService.filtered);
+	  };
+
+	  $scope.getFilter=()=>{
+	      console.log('running getFilter from details', appService.filtered);
+	      return [appService.filtered,appService.specificApp];
+	  }
+
+	});
+
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const programs = __webpack_require__(2).programs.program_blueprints;
 
 	myApp.controller('details', function($scope, appService) {
 	 
 	  console.log("detail controller");
 	  
 	  $scope.testDetails = 5555;
-	  $scope.getFilter= () =>{
+	  $scope.getFilter= () => {
 	      console.log('running getFilter from details', appService.filtered);
-	      return appService.filtered;
+	      return [appService.filtered, programs[appService.specificApp]];
+
 	  };
+
+	  $scope.filter = index => {
+	    appService.filtered = false;
+	    console.log(appService.filtered);
+	  };
+
+	  
 
 	});
 
