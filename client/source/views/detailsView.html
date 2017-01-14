@@ -1,18 +1,17 @@
 <div ng-controller="details">
-<div class="programDetails "id={{getFilter()[1].display_type}} ng-if= "getFilter()[0]">
-<div class='backRibbon' ng-click="filter()"> <span id="goBack"><img src="http://www.freeiconspng.com/uploads/left-arrow-9.png"></img> &nbsp Back</span></div><br>
-	<img ng-src=".././public/images/{{getFilter()[1].display_type}}.png"/><br>
-	<p id="detailsTitle"> {{getFilter()[1].title}} </p>
-	<p id="description">{{getFilter()[1].description}}</p>
-
-	<p id="incentives">{{getFilter()[1].incentive_description}}</p><br>
-	<p ng-if="!!getGoals()[0].length"  id ="goalsHeading">Goals</p>
-	<div ng-repeat="goal in getGoals()[0]">
-		<p id="goalTitle">Title:{{goal.title}}</p>
-		<p id="goalDescription">Description:{{goal.description}}</p>
-		<p id="goalIncentive">Incentive:{{goal.incentive_value}}</p>
-	</div>
-		<h1>{{getGoals()[1]?"Total:"+getGoals()[1]:null}}</h1>
-	</div>
+  <div class="programDetails" id={{getInfo()[1].display_type}} ng-if="getInfo()[0]">
+    <div class='backRibbon' ng-click="back()"> <span id="goBack"><img src="http://www.freeiconspng.com/uploads/left-arrow-9.png"></img> &nbsp Back</span></div>
+    <img ng-src=".././public/images/{{getInfo()[1].display_type}}.png" />
+    <p id="detailsTitle"> {{getInfo()[1].title}} </p>
+    <p id="description">{{getInfo()[1].description}}</p>
+    <p id="incentives">{{getInfo()[1].incentive_description}}</p>
+    <br>
+    <p ng-if="!!getGoals()[0].length" id="goalsHeading">Goals</p>
+    <div ng-repeat="goal in getGoals()[0]">
+      <p id="goalTitle">Title:{{goal.title}}</p>
+      <p id="goalDescription">Description:{{goal.description}}</p>
+      <p id="goalIncentive">Incentive:{{goal.incentive_value}}</p>
+    </div>
+    <h1>{{getGoals()[1]?"Total:"+getGoals()[1]:null}}</h1>
+  </div>
 </div>
-

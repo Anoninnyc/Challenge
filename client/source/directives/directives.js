@@ -1,7 +1,7 @@
-myApp.directive('programsView', function() {
+myApp.directive('dashboardView', function() {
   return {
   	  restrict:"A", 
-      templateUrl: '../source/views/programsView.html'  
+      templateUrl: '../source/views/dashboardView.html'  
       };
 });
 

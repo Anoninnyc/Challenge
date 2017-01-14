@@ -1,0 +1,102 @@
+body {
+  background-color: darkgrey;
+  text-align: center;
+}
+
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  text-align: center;
+  bottom: 3em;
+  position: relative;
+}
+
+.flex-item {
+  margin: 10px;
+}
+
+img {
+  width: 23em;
+  height: 23em;
+}
+
+.backRibbon {
+  background-image: url('.././images/top.png');
+  height: 10em;
+  position: relative;
+  width: 100%;
+  margin: none;
+  text-align: left;
+}
+
+#detailsTitle {
+  font-size: 6em;
+  font-family: Fantasy, Times, serif;
+}
+
+#goBack {
+  font: 5em Fantasy, Times, serif;
+  position: absolute;
+}
+
+#description {
+  font-size: 5vw;
+  margin: 1em;
+}
+
+#incentives {
+  font-size: 2em;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h3#programTitle {
+  font-size: 1.7em;
+}
+
+#steps #incentives {
+  font-size: 1em;
+}
+
+p#goalsHeading {
+  font: 6em Fantasy, Times, Serif;
+}
+
+p {
+  margin: 0px;
+}
+
+p#goalTitle {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.repeat {
+  left: 10.5%;
+  position: relative;
+}
+
+.programDetails {
+  color: white;
+}
+
+#goBack>img {
+  width: 1.5em;
+  height: 1.5em;
+  top: 0.3em;
+  position: relative;
+}
+
+img#Jiff {
+  height: 20em;
+  width: 30em;
+  position: relative;
+  left: 2.5em;
+}

@@ -47,31 +47,60 @@
 	myApp = angular.module('myApp', ['ngRoute']);
 
 	__webpack_require__(1);
-	__webpack_require__(3);
 	__webpack_require__(4);
+	__webpack_require__(5);
 	__webpack_require__(6);
+	__webpack_require__(7);
 
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const programs = __webpack_require__(2).programs;
+	const programs = __webpack_require__(2);
+	const goals = __webpack_require__(3);
 
-	myApp.service('appService', function() {
+	myApp.service('infoService', function() {
+	  this.ids = programs.program_blueprints.map(program => program.display_type);
 	  this.filtered = false;
 	  this.specificApp = null;
-	  console.log(555);
 	  this.programs = programs.program_blueprints;
-	});
+	  this.goals = goals.goals;
+	  this.goalGUIDS = this.goals.map(goal => goal.guid);
 
+	  this.getFiltered = () => {
+	    return this.filtered;
+	  };
+
+	  this.getInfo = () => {
+	    return [this.filtered, this.programs[this.specificApp]];
+	  };
+
+	  this.getGoals = () => {
+	    const goals = this.goals;
+	    const matching = [];
+	    const programGoals = this.programs[this.specificApp].goals;
+	    let total = 0;
+
+	    programGoals.forEach(goal => {
+	      let index = this.goalGUIDS.indexOf(goal.guid);
+	      if (index > -1) {
+	        matching.push(goals[index]);
+	      }
+	    });
+
+	    total = matching.map(goal => goal.incentive_value).reduce((a, b) => a + b, 0);
+	    return [matching, total];
+	  };
+
+	});
 
 
 /***/ },
 /* 2 */
 /***/ function(module, exports) {
 
-	module.exports.programs = {
+	module.exports = {
 	  "program_blueprints": [
 	    {
 	      "guid": "cb02cf94119c0a2500c0b4bc420180a0",
@@ -325,84 +354,6 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	myApp.controller('dashboard', function($scope, appService) {
-
-	  $scope.filtered = false;
-	  $scope.test = 'running dashboard controller';
-	  $scope.programs  = appService.programs;
-	  console.log("dashboard controller", appService.programs);
-	  $scope.ids = appService.programs.map(program=>program.display_type);
-	  console.log('here are ids!',$scope.ids);
-
-
-	  $scope.filter = index => {
-	    $scope.filtered = true;
-	    console.log(index);
-	    appService.specificApp = $scope.ids.indexOf(index);
-	    appService.filtered = true;
-	    console.log(appService.filtered);
-	  };
-
-
-	  $scope.getFilter=()=>{
-	      console.log('running getFilter from details', appService.filtered);
-	      return [appService.filtered,appService.specificApp];
-	  }
-
-	});
-
-
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	const programs = __webpack_require__(2).programs.program_blueprints;
-	const goals = __webpack_require__(5).goals;
-
-	console.log("goals", goals);
-
-	myApp.controller('details', function($scope, appService) {
-	  $scope.goalGUIDS = goals.map(goal => goal.guid);
-	  $scope.testDetails = 5555;
-
-	  $scope.getGoals = () => {
-	    var allGoals = [];
-	    var total = 0;
-
-	    for (var i = 0; i < programs[appService.specificApp].goals.length; i++) {
-	      let index = $scope.goalGUIDS.indexOf(programs[appService.specificApp].goals[i].guid);
-	      if (index > -1) {
-	        allGoals.push(goals[index]);
-	      }
-	    }
-	    if (!!allGoals.length){
-	    total = allGoals.map(a=>a.incentive_value).reduce((a,b)=> a+b);
-	   }
-
-	    console.log('allGoals', allGoals, $scope.goalGUIDS, programs[appService.specificApp].goals.map(a => a.guid));
-	    return [allGoals, total];
-	  }
-
-
-
-	  $scope.getFilter = () => {
-	    console.log('running getFilter from details', programs[appService.specificApp], $scope.allGoals);
-	    return [appService.filtered, programs[appService.specificApp]];
-	  };
-
-	  $scope.filter = index => {
-	    appService.filtered = false;
-	    console.log(appService.filtered);
-	  };
-
-	});
-
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
 	 module.exports ={
 	  "goals": [
 	    {
@@ -544,13 +495,72 @@
 	}
 
 /***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	myApp.service('toggleService', function(infoService) {
+	  
+	  this.filter = index => {
+	    infoService.specificApp = infoService.ids.indexOf(index);
+	    infoService.filtered = true;
+	    console.log(infoService.filtered);
+	  };
+
+	  this.back = ()=>{
+	    infoService.filtered=false;
+	  };
+	})
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	myApp.controller('dashboard', function($scope, infoService, toggleService){
+
+	  $scope.programs = infoService.programs;
+
+	  $scope.filter = index => {
+	    toggleService.filter(index);
+	  };
+
+	  $scope.getFiltered = () => {
+	    return infoService.getFiltered();
+	  };
+
+	});
+
+
+/***/ },
 /* 6 */
 /***/ function(module, exports) {
 
-	myApp.directive('programsView', function() {
+	
+	myApp.controller('details', function($scope, infoService,toggleService) {
+	  
+	  $scope.getGoals = () => {
+	    return infoService.getGoals();
+	  };
+
+	  $scope.getInfo = () => {
+	    return infoService.getInfo();
+	  };
+
+	  $scope.back = () => {
+	    toggleService.back();
+	    console.log(infoService.filtered);
+	  };
+
+	});
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	myApp.directive('dashboardView', function() {
 	  return {
 	  	  restrict:"A", 
-	      templateUrl: '../source/views/programsView.html'  
+	      templateUrl: '../source/views/dashboardView.html'  
 	      };
 	});
 

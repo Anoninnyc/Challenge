@@ -1,4 +1,4 @@
-module.exports.programs = {
+module.exports = {
   "program_blueprints": [
     {
       "guid": "cb02cf94119c0a2500c0b4bc420180a0",

@@ -1,4 +1,8 @@
 var webpack = require('webpack');
+var path = require('path');
+
+const SRC_DIR = path.join(__dirname, 'client', 'src');
+
 var config = {
   context: __dirname + '/client',
 
@@ -8,7 +12,8 @@ var config = {
   output: {
     path: __dirname + '/client',
     filename: 'bundle.js'
-  },
+  }
 }
 
 module.exports = config;
+
