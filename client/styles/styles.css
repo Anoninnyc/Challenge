@@ -1,17 +1,16 @@
 body {
-	background-color: blue;
+	background-color: darkgrey;
     text-align: center;
 }
 
 .flex-container {
     display: -webkit-flex;
     display: flex;
-    background-color: lightgrey;
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     text-align: center;
-    top: 13em;
+    bottom: 3em;
     position: relative;
 }
 
@@ -25,7 +24,7 @@ img {
 }
 
 .backRibbon {
-    background-color: red;
+    background-image:url('.././images/top.png');
     height: 10em;
     position: relative;
     width: 100%;
@@ -41,7 +40,6 @@ img {
 #goBack {
     font: 5em Fantasy,Times, serif;
     position: absolute;
-    top: 0.4em;
 }
 
 #description {
@@ -79,7 +77,25 @@ p#goalTitle {
     font-size: 2em;
 }
 
-.flex-item {
-    left: 25%;
+.repeat {
+    left: 10.5%;
     position: relative;
+}
+
+.programDetails{
+    color:white;
+}
+
+#goBack>img {
+    width: 1.5em;
+    height: 1.5em;
+    top: 0.3em;
+    position: relative;
+}
+
+img#Jiff {
+    height: 20em;
+    width: 30em;
+    position: relative;
+    left: 2.5em;
 }
