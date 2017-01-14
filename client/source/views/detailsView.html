@@ -1,13 +1,17 @@
 <div ng-controller="details">
-  <div class="programDetails" id={{getInfo()[1].display_type}} ng-if="getInfo()[0]">
-    <div class='backRibbon' ng-click="back()"> <span id="goBack"><img src="http://www.freeiconspng.com/uploads/left-arrow-9.png"></img> &nbsp Back</span></div>
-    <img ng-src=".././public/images/{{getInfo()[1].display_type}}.png" />
-    <p id="detailsTitle"> {{getInfo()[1].title}} </p>
-    <p id="description">{{getInfo()[1].description}}</p>
-    <p id="incentives">{{getInfo()[1].incentive_description}}</p>
-    <br>
-    <p ng-if="!!getGoals()[0].length" id="goalsHeading">Goals</p>
-    <div ng-repeat="goal in getGoals()[0]">
+  <div ng-init="program=getInfo()[1]; goals=getGoals()[0]" ngClass="programDetails {{getInfo()[1].display_type}}" ng-if="getInfo()[0]">
+    <div class='backRibbon' ng-click="back()"> 
+      <span id="goBack">
+        <img src="http://www.freeiconspng.com/uploads/left-arrow-9.png" />
+          &nbsp Back
+       </span>
+     </div>
+    <img ng-src=".././public/images/{{program.display_type}}.png" />
+    <p id="detailsTitle"> {{program.title}} </p>
+    <p id="description">{{program.description}}</p>
+    <p id="incentives">{{program.incentive_description}}</p>
+    <p ng-if="!!goals.length" id="goalsHeading">Goals</p>
+    <div ng-repeat="goal in goals">
       <p id="goalTitle">Title:{{goal.title}}</p>
       <p id="goalDescription">Description:{{goal.description}}</p>
       <p id="goalIncentive">Incentive:{{goal.incentive_value}}</p>
