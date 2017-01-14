@@ -61,17 +61,18 @@
 	const goals = __webpack_require__(3);
 
 	myApp.service('infoService', function() {
+
 	  this.ids = programs.program_blueprints.map(program => program.display_type);
 	  this.filtered = false;
 	  this.specificApp = null;
 	  this.programs = programs.program_blueprints;
 	  this.goals = goals.goals;
 	  this.goalGUIDS = this.goals.map(goal => goal.guid);
-
+	  // are we zoomed in?
 	  this.getFiltered = () =>  this.filtered;
-
+	 // get prgram info
 	  this.getInfo = () => [this.filtered, this.programs[this.specificApp]];
-
+	  // get goals associated with programs;
 	  this.getGoals = () => {
 	    const goals = this.goals;
 	    const matching = [];
@@ -200,7 +201,7 @@
 	      "enrollment_start_date": "2015-07-01",
 	      "hide_during_enrollment": false,
 	      "icon_url": "https://s3.amazonaws.com/i.jiff.com/production/applications/myjiff/jiff/test_incentives/icn_program_steps%402x.png",
-	      "incentive_description": "Earn every day!  For every day you track your steps, you can earn up to $3:\n \n \n 5,000 steps: earn 1 point\n10,000 steps: earn 2 points\n15,000 steps: earn 3 points\n\nFor the steps you take to count toward your incentive goal, you must sync your tracker with its app within 14 days. For example, the steps you take on March 1 must be syncâ€™d no later than March 15.",
+	      "incentive_description": "Earn every day! For every day you track your steps, you can earn up to $3:\n \n 5,000 steps: earn 1 point\n10,000 steps: earn 2 points\n15,000 steps: earn 3 points\n\nFor the steps you take to count toward your incentive goal, you must sync your tracker with its app within 14 days. For example, the steps you take on March 1 must be syncâ€™d no later than March 15.",
 	      "invisible": false,
 	      "mandatory": null,
 	      "possible_earnings_description": "Earn some points per day",
@@ -495,12 +496,12 @@
 /***/ function(module, exports) {
 
 	myApp.service('toggleService', function(infoService) {
-	  
+	  //zoom in/toggle view
 	  this.filter = index => {
 	    infoService.specificApp = infoService.ids.indexOf(index);
 	    infoService.filtered = true;
 	  };
-
+	  //zoomout/toggle view
 	  this.back = () =>infoService.filtered=false;
 
 	})
@@ -512,9 +513,9 @@
 	myApp.controller('dashboard', function($scope, infoService, toggleService){
 
 	  $scope.programs = infoService.programs;
-
+	  // zoom in
 	  $scope.filter = index => toggleService.filter(index);
-
+	  // Are we zoomed in?
 	  $scope.getFiltered = () => infoService.getFiltered();
 
 	});

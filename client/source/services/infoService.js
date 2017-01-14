@@ -1,4 +1,4 @@
-const programs = require('../programs.js');
+const programs = require('../programs.json');
 const goals = require('../goals.json');
 
 myApp.service('infoService', function() {
