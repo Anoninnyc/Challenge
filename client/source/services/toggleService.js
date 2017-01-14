@@ -5,6 +5,5 @@ myApp.service('toggleService', function(infoService) {
     infoService.filtered = true;
   };
   //zoomout/toggle view
-  this.back = () =>infoService.filtered=false;
-
-})
+  this.back = () => infoService.filtered = false;
+});

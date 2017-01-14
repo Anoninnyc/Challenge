@@ -10,8 +10,8 @@ myApp.service('infoService', function() {
   this.goals = goals.goals;
   this.goalGUIDS = this.goals.map(goal => goal.guid);
   // are we zoomed in?
-  this.getFiltered = () =>  this.filtered;
- // get prgram info
+  this.getFiltered = () => this.filtered;
+  // get prgram info
   this.getInfo = () => [this.filtered, this.programs[this.specificApp]];
   // get goals associated with programs;
   this.getGoals = () => {

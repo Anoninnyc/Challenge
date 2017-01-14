@@ -13,11 +13,13 @@ The code challenge is as follows:
 ### LOOKS
 - As we are mobile first, the app should be optimized for 360px x 640px, portrait mode.
 - For the purpose of this exercise it will only be judged at that size, so don't worry about a tablet or desktop version.
-*****************************************- A screenshot of our current details page is provided for guidance. The dashboard is up to you.
+- A screenshot of our current details page is provided for guidance.
+
+. The dashboard is up to you.
 
 
 ### INSTRUCTIONS
-- Using the program_blueprints.json, construct a grid (2 or 3 columns per row, preferably using flexbox) of program icons using the blueprint's icon_url as the image, and the ***********display_type as the unique identifier.**************
+- Using the program_blueprints.json, construct a grid (2 or 3 columns per row, preferably using flexbox) of program icons using the blueprint's icon_url as the image, and the display_type as the unique identifier.
 - Use the blueprint's title attribute to display a name underneath the icon.
 - Pay special attention to the program's display order, and make sure to display them in order.
 
