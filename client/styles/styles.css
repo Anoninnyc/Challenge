@@ -20,8 +20,8 @@ body {
 }
 
 img {
-    width: 17em;
-    height: 17em;
+    width: 23em;
+    height: 23em;
 }
 
 .backRibbon {
@@ -45,12 +45,13 @@ img {
 }
 
 #description {
-    font-size: 4vw;
-    text-align: left;
+    font-size: 5vw;
     margin: 1em;
 }
 
-
+#incentives {
+    font-size: 2em;
+}
 
 html, body {
 margin:0;
@@ -58,5 +59,27 @@ padding:0;
 }
 
 h3#programTitle {
-    font-size: 1.3em;
+    font-size: 1.7em;
+}
+
+#steps #incentives {
+    font-size: 1em;
+}
+
+p#goalsHeading {
+  font: 6em Fantasy,Times,Serif;
+}
+
+p {
+    margin: 0px;
+}
+
+p#goalTitle {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.flex-item {
+    left: 25%;
+    position: relative;
 }

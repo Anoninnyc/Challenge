@@ -1,19 +1,19 @@
 <div ng-controller="details">
-<div ng-if= "getFilter()[0]">
-<div class='backRibbon' ng-click="filter()"> <span id="goBack">Go Back!</span></div><br>
-	<img src={{getFilter()[1].icon_url}}/>
+<div id={{getFilter()[1].display_type}} ng-if= "getFilter()[0]">
+<div class='backRibbon' ng-click="filter()"> <span id="goBack"><-- Go Back!</span></div><br>
+	<img ng-src=".././public/images/{{getFilter()[1].display_type}}.png"/><br>
 	<p id="detailsTitle"> {{getFilter()[1].title}} </p>
-	<p id="description">{{getFilter()[1].description?"Description:"+getFilter()[1].description:null}}</p>
-	<p id="incentives">{{getFilter()[1].incentive_description?"Incentives:"+getFilter()[1].incentive_description:null}}</p>
-
-	<h1 ng-if="!!getGoals()[0].length">Goals</h1>
+	<p id="description">{{getFilter()[1].description}}</p>
+	<p id="incentives">{{getFilter()[1].incentive_description?"Incentives:"+getFilter()[1].incentive_description:null}}</p><br>
+	<p ng-if="!!getGoals()[0].length"  id ="goalsHeading">Goals</p>
 	<div ng-repeat="goal in getGoals()[0]">
-		<h2 id="goalTitle">Title:{{goal.title}}</h2>
-		<h3 id="goalDescription">Description{{goal.description}}</h3>
-		<h4 id="goalIncentive">Incentive:{{goal.incentive_value}}</h4>
+		<p id="goalTitle">Title:{{goal.title}}</p>
+		<p id="goalDescription">Description:{{goal.description}}</p>
+		<p id="goalIncentive">Incentive:{{goal.incentive_value}}</p>
 	</div>
-	{{}}
-	<h1>{{getGoals()[1]?"Total:"+getGoals()[1]:null}}</h1>
-
+		<h1>{{getGoals()[1]?"Total:"+getGoals()[1]:null}}</h1>
 	</div>
 </div>
+
+
+

@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	myApp = angular.module('myApp', []);
+	myApp = angular.module('myApp', ['ngRoute']);
 
 	__webpack_require__(1);
 	__webpack_require__(3);
