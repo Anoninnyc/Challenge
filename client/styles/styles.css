@@ -10,14 +10,14 @@ body {
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+    text-align: center;
 }
 
 .flex-item {
-	
-   margin: 10px;
+    margin: 10px;
 }
-img{
 
-	height:300px;
-	width:300px;
+img{
+    height:250px;
+	width:250px;
 }

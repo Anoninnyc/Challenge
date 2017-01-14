@@ -1,34 +1,11 @@
-  <div ng-controller="dashboard">
-
-  {{programs[0]}}
-
-  <div class="flex-container">
-  <div class="flex-item"><img src={{programs.program_blueprints[0].icon_url}}></img></div>
-    <div class="flex-item"><img src={{programs.program_blueprints[1].icon_url}}></img></div>
-      <div class="flex-item"><img src={{programs.program_blueprints[2].icon_url}}></img></div>
-    <div class="flex-item"><img src={{programs.program_blueprints[3].icon_url}}></img></div>
-      <div class="flex-item"><img src={{programs.program_blueprints[4].icon_url}}></img></div>
-    <div class="flex-item"><img src={{programs.program_blueprints[5].icon_url}}></img></div>
-</div>
-
-     
+<div ng-controller="dashboard">
+  <div ng-if='!getFilter()'>
+  {{getFilter()}}
+    <div class="flex-container">
+      <div ng-repeat="program in programs">
+        <div class="flex-item" ng-click="filter($index)"><img src={{program.icon_url}}/>
+          <h3>{{program.title}}</h3></div>
+      </div>
     </div>
-
-
-<!-- 
-
-
- <table>
-
-        <tr>
-          <td><img src={{programs.program_blueprints[0].icon_url}}></img></td>
-          <td><img src={{programs.program_blueprints[1].icon_url}}></img></td>
-          <td><img src={{programs.program_blueprints[2].icon_url}}></img></td>
-        </tr>
-        <tr>
-          <td><img src={{programs.program_blueprints[3].icon_url}}></img></td>
-          <td><img src={{programs.program_blueprints[4].icon_url}}></img></td>
-          <td><img src={{programs.program_blueprints[5].icon_url}}></img></td>
-        </tr>
-      </table>
-      {{test}} this is meee -->
+  </div>
+</div>
