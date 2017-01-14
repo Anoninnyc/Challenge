@@ -1,15 +1,14 @@
 const express = require('express');
 const app = express();
+const http = require('http');
 const path = require('path');
-const pathToStaticDir = __dirname + '/client/public/index.html';
+const pathToStaticDir = path.resolve(__dirname,'..','/client/public/index.html');
 
 //const bodyParser = require('body-parser');
 //const sessions = require("client-sessions");
-const server= app.listen(3000, (req, res) => {
-  console.log("listening on port 3000")
-});
 
 
+const server = http.createServer(app);
 ////////
 //Middleware
 ///////////////
@@ -27,3 +26,9 @@ app.get('*', (req, res) => {
   res.status(200).sendFile(pathToStaticDir);
 });
 //app.listen(3000, routes.listen);
+/* Kick off server */
+const port = process.env.PORT || 3000;
+
+server.listen(port, () => {
+  console.log('Listening on port', port);
+});
